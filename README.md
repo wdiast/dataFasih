@@ -83,6 +83,8 @@ python gc_pln_pasca.py
 ```
 
 ## Hal yang perlu diubah di script
+buka  `vscode` atau tools lainnya 
+
 ### Login Akun SSO
 Ada tanda 
 
