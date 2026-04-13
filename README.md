@@ -87,7 +87,7 @@ Masukkan Username dan Password seperti yang ditunjukkan pada script
   #Halaman Collect
   #============`
 
-  ganti sesuai dengan url pada halaman data yang ingin diam,
+  ganti sesuai dengan url pada halaman data yang ingin diambil
 
 ## Kredit
 
