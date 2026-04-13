@@ -24,8 +24,8 @@ driver.get("https://fasih-sm.bps.go.id/oauth_login.html")
 driver.find_element(By.XPATH, '//*[@id="login-in"]/a[2]').click()
 
 wait.until(EC.presence_of_element_located(
-    (By.ID, "username"))).send_keys("Widiaastuti") #username
-driver.find_element(By.ID, "password").send_keys("Sotoenak23") #password
+    (By.ID, "username"))).send_keys("") #Masukkan username
+driver.find_element(By.ID, "password").send_keys("") #Masukkan password
 driver.find_element(By.ID, "kc-login").click()
 
 wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
@@ -35,7 +35,7 @@ print("Login sukses")
 # HALAMAN COLLECT
 # ======================
 driver.get(
-    "https://fasih-sm.bps.go.id/survey-collection/collect/2395b67d-d1af-4739-9ef8-c0cc0aa9ce9a")#ganti
+    "https://fasih-sm.bps.go.id/survey-collection/collect/2395b67d-d1af-4739-9ef8-c0cc0aa9ce9a")#ganti dengan link data yang mau diambil di Fasih
 
 time.sleep(5)
 
@@ -93,7 +93,7 @@ kab.click()
 # PILIH ULP
 # ======================
 
-list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"}
+list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"} #ganti dengan list ULP yang mau diambil datanya, pastikan formatnya sama dengan yang ada di dropdown ULP
 
 all_data = []
 
