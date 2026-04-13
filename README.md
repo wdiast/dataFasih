@@ -43,20 +43,20 @@ Jika `python` tidak dikenali, tutup dan buka ulang terminal. Jika masih gagal, u
 Buka PowerShell atau CMD, lalu jalankan perintah berikut satu per satu:
 
 ```bash
-git clone https://github.com/bpskabbulungan/otomatisasidirgc-6502.git
+git clone https://github.com/wdiast/dataFasih.git
 ```
 
 Perintah di atas mengunduh project dari GitHub.
 
 ```bash
-cd otomatisasidirgc-6502
+cd dataFasih
 ```
 
 Perintah di atas masuk ke folder project (wajib sebelum menjalankan perintah lain).
 
 ## Instal Dependensi
 
-Pastikan masih berada di folder project `otomatisasidirgc-6502`, lalu jalankan:
+Pastikan masih berada di folder project `dataFasih`, lalu jalankan:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -70,198 +70,24 @@ python -m playwright install chromium
 
 Perintah di atas mengunduh browser Chromium yang diperlukan Playwright. Cukup dijalankan sekali per environment.
 
-## File Excel
-
-Default: `data/Direktori_SBR_20260114.xlsx` (bisa diganti via `--excel-file`).
-Jika file tidak ditemukan, sistem akan mencoba `Direktori_SBR_20260114.xlsx` di root project.
-
-Kolom yang dikenali:
-
-- `idsbr`
-- `nama_usaha` (atau `nama usaha` / `namausaha` / `nama`)
-- `alamat` (atau `alamat usaha` / `alamat_usaha`)
-- `latitude` / `lat`
-- `longitude` / `lon` / `long`
-- `hasil_gc` / `hasil gc` / `hasilgc` / `ag` / `keberadaanusaha_gc`
-
-Kode `hasil_gc` yang valid:
-
-- 0 / 99 = Tidak Ditemukan
-- 1 = Ditemukan
-- 3 = Tutup
-- 4 = Ganda
-
-Jika kolom `hasil_gc` tidak ditemukan, sistem memakai kolom ke-6 (`keberadaanusaha_gc`).
-
-## Cara Menjalankan - GUI
-
-GUI direkomendasikan untuk pengguna non-terminal. Pastikan semua langkah di atas sudah dilakukan.
-
-Jalankan perintah berikut dari folder project:
-
-```bash
-python run_dirgc_gui.py
-```
-
-Setelah GUI terbuka:
-
-1. Buka menu `Akun SSO`, isi username dan password jika ingin auto-login.
-2. Pilih file Excel (atau pastikan file default sudah ada di `data/`).
-3. Buka menu `Run` untuk input baru, `Update` untuk edit hasil GC, atau `Validasi GC` untuk kirim laporan validasi.
-4. Klik tombol mulai/update/validasi sesuai menu yang dipilih.
-5. Di menu `Update` dan `Validasi GC`, pilih field yang ingin diproses (Hasil GC, Nama, Alamat, Koordinat).
-   Jika field dipilih tetapi nilai Excel kosong, baris akan ditolak (status `gagal`), kecuali koordinat.
-   Untuk koordinat, boleh isi salah satu saja (latitude atau longitude) atau kosong seluruhnya.
-6. Jika sering muncul pesan *Something Went Wrong* saat submit, buka menu
-   `Mode Stabilitas` dan pilih mode agar jeda antar submit lebih panjang dan 429 lebih jarang muncul.
-
-### Menu pada GUI
-
-- **Beranda**: ringkasan singkat fungsi aplikasi dan cara pakai.
-- **Akun SSO**: tempat mengisi kredensial SSO untuk auto-login (tidak disimpan ke file).
-- **Run**: proses input GC dari Excel (operasional utama).
-- **Update**: memperbarui data via tombol **Edit Hasil** (Hasil GC/Nama/Alamat/Koordinat).
-- **Validasi GC**: validasi data via tombol **Laporkan Hasil GC - Tidak Valid** (Hasil GC/Nama/Alamat/Koordinat) dan submit **KIRIM LAPORAN**.
-- **Recap**: menarik semua data via API dan menyimpan Excel rekap di `logs/recap/`  
-  Output otomatis terpisah 3 sheet: **Sudah GC**, **Belum GC**, **Duplikat**.
-- **Mode Stabilitas**: memilih profil rate limit untuk mengurangi HTTP 429.
-- **Settings**: pengaturan lanjutan (idle timeout, web timeout, skala font, dsb).
-
-### Detail Mode Validasi GC (GUI)
-
-Menu `Validasi GC` memakai alur seperti `Update`, tetapi tombol aksi pada kartu usaha berbeda:
-
-1. Filter data berdasarkan `idsbr`/`nama_usaha`/`alamat` dari Excel.
-2. Buka kartu usaha hasil cocok.
-3. Klik tombol **Laporkan Hasil GC - Tidak Valid** (`.btn-gc-report`).
-4. Isi form validasi report:
-   - `#report_hasil_gc`
-   - `#report_toggle_edit_nama` + `#report_nama_usaha_gc`
-   - `#report_toggle_edit_alamat` + `#report_alamat_usaha_gc`
-   - `#report_latitude` dan `#report_longitude`
-5. Klik tombol **KIRIM LAPORAN** (`#submit-report-gc-btn`).
-6. Sistem membaca validasi dari web (SweetAlert/form validation). Jika muncul pesan error
-   seperti `Opsi keberadaan usaha hasil gc harus terisi!`, baris ditandai `gagal`
-   dan pesan disimpan ke kolom `catatan` pada log.
 
 ## Cara Menjalankan - Script atau Terminal
 
-### Perintah dasar
+## Login Akun SSO
+Ada tanda 
 
-Jalankan perintah berikut dari folder project:
+ `#============
+  #LOGIN
+  #============`
+Masukkan Username dan Password seperti yang ditunjukkan pada script
 
-```bash
-python run_dirgc.py
-```
 
-Perintah ini akan menggunakan file Excel default di `data/` dan mencoba auto-login jika kredensial tersedia.
+## Ubah Link Halaman Collect
+ `#============
+  #Halaman Collect
+  #============`
 
-### Menentukan file Excel dan kredensial
-
-```bash
-python run_dirgc.py --excel-file data/Direktori_SBR_20260114.xlsx --credentials-file config/credentials.json
-```
-
-Perintah di atas memakai file Excel tertentu dan kredensial dari file JSON.
-
-### Membatasi baris yang diproses
-
-```bash
-python run_dirgc.py --start 1 --end 5
-```
-
-Perintah di atas hanya memproses baris 1 sampai 5 (1-based, inklusif).
-
-### Opsi CLI tambahan
-
-- `--headless` untuk menjalankan browser tanpa UI (SSO sering butuh mode non-headless).
-- `--idle-timeout-ms` untuk batas idle (default 1800000 / 30 menit).
-- Rekap via `--recap` menghasilkan Excel dengan 3 sheet: `Sudah GC`, `Belum GC`, `Duplikat`.
-- `--recap-backup-every` untuk mengatur backup `.bak` setiap N batch (default: 10, gunakan 0 untuk mematikan).
-- `--web-timeout-s` untuk toleransi loading web (default 300 detik).
-- `--manual-only` untuk selalu login manual (tanpa auto-fill kredensial).
-- `--dirgc-only` untuk berhenti di halaman DIRGC (tanpa filter/input).
-- `--edit-nama-alamat` untuk mengaktifkan toggle edit Nama/Alamat Usaha dan isi dari Excel.
-- `--keep-open` untuk menahan browser tetap terbuka setelah proses (default aktif). Gunakan `--no-keep-open` untuk menutup otomatis.
-- `--update-mode` untuk menggunakan tombol Edit Hasil (update data).
-- `--validate-gc-mode` untuk mode validasi GC dari Excel (klik tombol **Laporkan Hasil GC - Tidak Valid** lalu submit **KIRIM LAPORAN**).
-- `--validate-gc-preview` untuk uji cepat buka form validasi dari card target (tanpa proses batch Excel).
-- `--prefer-web-coords` untuk mempertahankan koordinat yang sudah terisi di web.
-- `--update-fields` untuk memilih field yang diproses saat `--update-mode`/`--validate-gc-mode` (contoh: `hasil_gc,nama_usaha,alamat,koordinat`).
-- `--rate-limit-profile` untuk mengatur kecepatan submit (normal/safe/ultra).
-- `--submit-mode request` tidak dipakai pada `--validate-gc-mode` (otomatis fallback ke `ui`).
-
-Auto-login akan mencoba kredensial terlebih dulu; jika gagal/OTP muncul, akan beralih ke manual login.
-Secara default, koordinat diisi dari Excel (jika ada), meskipun web sudah berisi.
-
-## Konfigurasi Akun SSO
-
-Untuk CLI, buat file `config/credentials.json` dengan isi berikut:
-
-```json
-{
-  "username": "usernamesso",
-  "password": "passwordsso"
-}
-```
-
-Atau gunakan environment variables:
-
-- `DIRGC_USERNAME`
-- `DIRGC_PASSWORD`
-
-Pencarian file kredensial juga mendukung fallback `credentials.json` di root project. Jika file dan environment variables tersedia, isi file akan diprioritaskan.
-
-Untuk GUI, isi kredensial lewat menu `Akun SSO` (tidak disimpan ke file).
-
-## Catatan
-
-- Untuk login SSO, mode non-headless disarankan.
-- Log terminal sudah diperkaya dengan timestamp dan detail langkah.
-
-## Output Log Excel
-
-Setiap run akan menghasilkan file log Excel di folder `logs/run/YYYYMMDD/`.
-Untuk mode update/validasi GC, log berada di `logs/update/YYYYMMDD/`.
-Nama file mengikuti pola `run{N}_{HHMM}.xlsx` (contoh: `run1_0930.xlsx`).
-
-Untuk **rekap** (`--recap` / menu Recap), file output ada di `logs/recap/YYYYMMDD/`
-dengan nama `rekap{N}_{HHMMSS}.xlsx`. Penyimpanan rekap dibuat aman per batch:
-
-- Sebelum menulis, file lama dibackup menjadi `.bak`.
-- File baru ditulis ke file sementara, lalu di-`replace` secara atomik.
-- Jika file sedang terkunci (mis. dibuka di Excel), bisa muncul file `.new`.
-  Tutup Excel, lalu rename `.new` menjadi `.xlsx`. Proses rekap tetap berjalan.
-
-Jika terjadi error di batch tengah, batch sebelumnya tetap aman di file utama
-atau backup `.bak`.
-Frekuensi backup bisa diatur via `--recap-backup-every` (contoh: `--recap-backup-every 5`).
-
-Kolom log:
-
-- `no`
-- `idsbr`
-- `nama_usaha`
-- `alamat`
-- `keberadaanusaha_gc`
-- `latitude`
-- `latitude_source` (web/excel/empty/missing/unknown)
-- `latitude_before`
-- `latitude_after`
-- `longitude`
-- `longitude_source` (web/excel/empty/missing/unknown)
-- `longitude_before`
-- `longitude_after`
-- `hasil_gc_before`
-- `hasil_gc_after`
-- `nama_usaha_before`
-- `nama_usaha_after`
-- `alamat_before`
-- `alamat_after`
-- `status` (berhasil/gagal/error/skipped)
-- `catatan`
-
-Nilai `skipped` biasanya muncul jika data sudah GC atau terdeteksi duplikat.
+  ganti sesuai dengan url pada halaman data yang ingin diam,
 
 ## Kredit
 
