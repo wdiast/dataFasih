@@ -73,11 +73,11 @@ Perintah di atas mengunduh browser Chromium yang diperlukan Playwright. Cukup di
 
 ## Cara Menjalankan - Script atau Terminal
 buka cmd/powershell di folder project
-###1) untuk prabayar
+### 1) untuk prabayar
 ```bash
 python gc_pln_pra.py
 ```
-###2) untuk pascabayar
+### 2) untuk pascabayar
 ```bash
 python gc_pln_pasca.py
 ```
@@ -94,7 +94,9 @@ Masukkan Username dan Password seperti yang ditunjukkan pada script
 
 ### Ubah Link Halaman Collect
  `==============`
+ 
  `Halaman Collect `
+ 
  `==============`
 
   ganti sesuai dengan url pada halaman data yang ingin diambil
@@ -103,8 +105,11 @@ Masukkan Username dan Password seperti yang ditunjukkan pada script
 ### 1) UNTUK GC_PLN_PASCA
  #### Pilih ULP
  `==============`
+ 
  `Pilih ULP `
+ 
  `==============`
+ 
  ganti bagian ini
  
  ```bash
@@ -128,8 +133,11 @@ dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masi
 ### 2) UNTUK GC_PLN_PRA
  #### Pilih ULP
  `==============`
+ 
  `Pilih ULP `
+ 
  `==============`
+ 
  ganti bagian ini
  
  ```bash
