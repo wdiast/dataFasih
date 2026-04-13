@@ -2,8 +2,6 @@
 
 ## Persiapan (Python dan Git)
 
-Bagian ini untuk pengguna awam. Jika Python dan Git sudah terpasang, lanjut ke [Unduh Project](#unduh-project).
-
 ### 1) Install Python
 
 Unduh dan instal Python 3 dari:
@@ -25,7 +23,7 @@ python --version
 ```
 
 Contoh output yang benar:
-`Python 3.11.6`
+`Python 3.14.2`
 
 Lalu cek Git:
 
@@ -34,7 +32,7 @@ git --version
 ```
 
 Contoh output yang benar:
-`git version 2.44.0.windows.1`
+`git version 2.52.0.windows.1`
 
 Jika `python` tidak dikenali, tutup dan buka ulang terminal. Jika masih gagal, ulangi instalasi Python dan pastikan opsi "Add Python to PATH" dicentang.
 
