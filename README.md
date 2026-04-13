@@ -76,19 +76,58 @@ Perintah di atas mengunduh browser Chromium yang diperlukan Playwright. Cukup di
 ## Login Akun SSO
 Ada tanda 
 
- `#============
-  #LOGIN
-  #============`
+ `==============`
+ `LOGIN `
+ `==============`
 Masukkan Username dan Password seperti yang ditunjukkan pada script
 
 
 ## Ubah Link Halaman Collect
- `#============
-  #Halaman Collect
-  #============`
+ `==============`
+ `Halaman Collect `
+ `==============`
 
   ganti sesuai dengan url pada halaman data yang ingin diambil
+  contoh -> 
+
+## UNTUK GC_PLN_PASCA
+ ## Pilih ULP
+ `==============`
+ `Pilih ULP `
+ `==============`
+ ganti bagian ini
+ 
+ ```bash
+list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"}
+if ulp=="kendal":
+    ulp="[52305] KENDAL"
+    rbm_first="[GEAKDAC] GEAKDAC"
+elif ulp=="weleri":
+    ulp="[52309] WELERI"
+    rbm_first="[GJAGHAA] GJAGHAA"
+elif ulp=="boja":
+    ulp="[52310] BOJA"
+    rbm_first="[GKAAMRH] GKAAMRH"
+else:
+    print("Keyword tidak ditemukan, pastikan memasukan keyword dengan benar (kendal/weleri/boja)")
+    driver.quit()
+    exit()
+```
+dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masing-masing ULP (yang pertama saja)
+
+## UNTUK GC_PLN_PRA
+ ## Pilih ULP
+ `==============`
+ `Pilih ULP `
+ `==============`
+ ganti bagian ini
+ 
+ ```bash
+list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"}
+```
+dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masing-masing ULP (yang pertama saja)
+
 
 ## Kredit
 
-Semoga panduan ini membantu. Jika ada pertanyaan, hubungi tim IPDS BPS Kabupaten Bulungan.
+by icy
