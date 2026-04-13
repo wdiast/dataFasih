@@ -129,7 +129,7 @@ elif ulp=="boja":
     ulp="[52310] BOJA"
     rbm_first="[GKAAMRH] GKAAMRH"
 else:
-    print("Keyword tidak ditemukan, pastikan memasukan keyword dengan benar (kendal/weleri/boja)")
+    print("Ulp tidak ditemukan, pastikan memasukan Ulp dengan benar (kendal/weleri/boja)")
     driver.quit()
     exit()
 ```
