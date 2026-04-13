@@ -72,8 +72,18 @@ Perintah di atas mengunduh browser Chromium yang diperlukan Playwright. Cukup di
 
 
 ## Cara Menjalankan - Script atau Terminal
+buka cmd/powershell di folder project
+###1) untuk prabayar
+```bash
+python gc_pln_pra.py
+```
+###2) untuk pascabayar
+```bash
+python gc_pln_pasca.py
+```
 
-## Login Akun SSO
+## Hal yang perlu diubah di script
+### Login Akun SSO
 Ada tanda 
 
  `==============`
@@ -82,7 +92,7 @@ Ada tanda
 Masukkan Username dan Password seperti yang ditunjukkan pada script
 
 
-## Ubah Link Halaman Collect
+### Ubah Link Halaman Collect
  `==============`
  `Halaman Collect `
  `==============`
@@ -90,8 +100,8 @@ Masukkan Username dan Password seperti yang ditunjukkan pada script
   ganti sesuai dengan url pada halaman data yang ingin diambil
   contoh -> 
 
-## UNTUK GC_PLN_PASCA
- ## Pilih ULP
+### 1) UNTUK GC_PLN_PASCA
+ #### Pilih ULP
  `==============`
  `Pilih ULP `
  `==============`
@@ -115,8 +125,8 @@ else:
 ```
 dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masing-masing ULP (yang pertama saja)
 
-## UNTUK GC_PLN_PRA
- ## Pilih ULP
+### 2) UNTUK GC_PLN_PRA
+ #### Pilih ULP
  `==============`
  `Pilih ULP `
  `==============`
