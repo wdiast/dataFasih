@@ -87,8 +87,11 @@ python gc_pln_pasca.py
 Ada tanda 
 
  `==============`
+ 
  `LOGIN `
+ 
  `==============`
+ 
 Masukkan Username dan Password seperti yang ditunjukkan pada script
 
 
@@ -110,7 +113,7 @@ Masukkan Username dan Password seperti yang ditunjukkan pada script
  
  `==============`
  
- ganti bagian ini
+ ganti bagian ini :
  
  ```bash
 list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"}
@@ -138,7 +141,7 @@ dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masi
  
  `==============`
  
- ganti bagian ini
+ ganti bagian ini :
  
  ```bash
 list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"}
