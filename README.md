@@ -131,7 +131,7 @@ else:
     driver.quit()
     exit()
 ```
-dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masing-masing ULP (yang pertama saja)
+dengan daftar ULP wilayah masing-masing. selain itu, ambil RBM pertama pada masing-masing ULP (yang pertama saja)
 
 ### 2) UNTUK GC_PLN_PRA
  #### Pilih ULP
@@ -146,7 +146,7 @@ dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masi
  ```bash
 list_ulp = {"[52305] KENDAL", "[52309] WELERI", "[52310] BOJA"}
 ```
-dengan daftar ulp wilayah masing-masing. selain itu, ambil RBM pertama pada masing-masing ULP (yang pertama saja)
+daftar ULP wilayah masing-masing
 
 
 ## Kredit
