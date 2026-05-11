@@ -17,8 +17,8 @@ from datetime import datetime
 # ======================
 # KONFIGURASI
 # ======================
-USERNAME    = "widiaastuti"           # isi username
-PASSWORD    = "Sotoenak23"           # isi password
+USERNAME    = ""           # isi username
+PASSWORD    = ""           # isi password
 SURVEY_URL  = "https://fasih-sm.bps.go.id/survey-collection/collect/8712a6fc-a996-4a8f-ad6f-56a278c19288"
 
 # File checkpoint & output — nama tetap agar resume bisa ditemukan
